@@ -7,9 +7,9 @@
 <!-- Второй сайт Джони: детейлинг любых марок. Range Rover живёт на johnny-studio.github.io. Пока не согласован, в поиск не отдаём -->
 <meta name="robots" content="noindex">
 <meta name="description" content="Полировка и керамика, удаление вмятин без покраски, химчистка салона, оклейка плёнкой, реставрация фар, покраска дисков. Любые марки. Москва, Тюменский проезд, 5 с2.">
-<meta name="theme-color" content="#f2eee6">
+<meta name="theme-color" content="#0c0c0b">
 <link rel="icon" href="img/logo.jpg">
-<link rel="preload" href="img/hero.jpg" as="image">
+<link rel="preload" href="fonts/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
@@ -17,289 +17,324 @@
 @font-face{font-family:'Inter Tight';font-style:normal;font-weight:700 900;font-display:swap;src:url(fonts/inter-tight-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
 @font-face{font-family:'Inter Tight';font-style:normal;font-weight:700 900;font-display:swap;src:url(fonts/inter-tight-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 
-/* ===== ТОКЕНЫ. Палитра из логотипа: чёрный, золото, светлая бумага. Сайт про Range Rover тёмный с оранжевым ===== */
+/* ===== ТОКЕНЫ. Чёрный и шампань-золото, как на логотипе студии. Сайт про Range Rover — графит с оранжевым ===== */
 :root{
- --paper:#f2eee6;--paper2:#e8e2d6;--card:#faf8f3;--ink:#141412;--ink2:#3a3731;--mut:#776f63;--line:rgba(20,20,18,.12);
- --dark:#0f0f0e;--dark2:#191917;--dtx:#efebe3;--dmut:#9b958a;--dline:rgba(255,255,255,.1);
- --gold:#c29a5b;--gold-rgb:194,154,91;--goldTx:#8a6430;
+ --bg:#0c0c0b;--bg2:#141412;--bg3:#1c1b18;--tx:#ede8de;--tx2:#c4bdb0;--mut:#8f897d;--line:rgba(237,232,222,.09);--line2:rgba(201,164,103,.28);
+ --gold:#c9a467;--gold-rgb:201,164,103;--goldInk:#1b140a;
+ --grad:linear-gradient(100deg,#8c6a36 0%,#e9cf98 38%,#b88f4f 62%,#f3e2b8 100%);
  --head:"Inter Tight","Inter",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;
- --pad:max(clamp(16px,5vw,72px),calc((100vw - 1440px)/2));
- --ease:cubic-bezier(.2,.7,.1,1);
+ --pad:max(clamp(16px,5vw,80px),calc((100vw - 1480px)/2));
+ --ease:cubic-bezier(.2,.7,.1,1);--ease2:cubic-bezier(.77,0,.18,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html,body{overflow-x:clip}
 html.lock{overflow:hidden}
-body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 h1,h2,h3,summary{text-wrap:balance}p,dd{text-wrap:pretty}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-section{padding:clamp(72px,10vw,140px) var(--pad);position:relative}
-.k{display:inline-flex;align-items:center;gap:12px;font:600 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--goldTx)}
-.k::before{content:"";width:28px;height:1px;background:currentColor}
-h2{font:800 clamp(34px,5.2vw,76px)/.98 var(--head);letter-spacing:-.035em;margin-top:18px}
+section{padding:clamp(80px,11vw,160px) var(--pad);position:relative}
+/* зерно поверх всей страницы: убирает «цифровую» плоскость тёмного фона */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.k{display:inline-flex;align-items:center;gap:14px;font:600 11px/1 var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.k::before{content:"";width:34px;height:1px;background:var(--grad)}
+h2{font:800 clamp(36px,5.4vw,84px)/.95 var(--head);letter-spacing:-.045em;margin-top:22px}
 h2 em{font-style:normal;color:var(--mut)}
-.dk{background:var(--dark);color:var(--dtx)}
-.dk .k{color:var(--gold)}
-.dk h2 em{color:var(--dmut)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 15px/1 var(--body);transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;white-space:nowrap}
+h2 .ln{display:block;overflow:hidden;padding:.06em 0 .08em;margin:-.06em 0 -.08em}
+h2 .ln b{display:block;font-weight:inherit;transform:translateY(110%) rotate(2deg);transform-origin:left top;transition:transform 1.2s var(--ease)}
+h2.in .ln b{transform:none}h2 .ln:nth-child(2) b{transition-delay:.1s}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 30px;border-radius:999px;font:600 14.5px/1 var(--body);letter-spacing:.02em;white-space:nowrap;overflow:hidden;isolation:isolate;transition:transform .3s var(--ease),color .3s,border-color .3s}
 .btn:active{transform:scale(.97)}
-.btn.i{background:var(--ink);color:var(--paper)}
-.btn.i:hover{background:#000}
-.btn.g{background:var(--gold);color:#1a1206}
-.btn.g:hover{background:#d3ad6f}
-.btn.o{border:1px solid var(--line);color:var(--ink)}
-.btn.o:hover{border-color:var(--ink)}
-.dk .btn.o{border-color:var(--dline);color:var(--dtx)}
-.dk .btn.o:hover{border-color:var(--dtx)}
+.btn.g{background:var(--grad);color:var(--goldInk);background-size:160% 100%;background-position:0 0;transition:background-position .8s var(--ease),transform .3s var(--ease)}
+.btn.g:hover{background-position:100% 0}
+.btn.o{border:1px solid var(--line2);color:var(--tx)}
+.btn.o:hover{border-color:var(--gold);color:var(--gold)}
 .btn svg{width:18px;height:18px}
-[data-r]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-r]{opacity:0;transform:translateY(34px);transition:opacity 1.1s var(--ease),transform 1.2s var(--ease)}
 [data-r].in{opacity:1;transform:none}
 
 /* ===== ШАПКА ===== */
-.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px var(--pad);transition:background .4s,box-shadow .4s}
-.nav.s{background:rgba(242,238,230,.86);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);box-shadow:0 1px 0 var(--line)}
-.logo{display:flex;align-items:center;gap:12px;font:800 15px/1 var(--head);letter-spacing:.2em}
-.logo img{width:40px;height:40px;border-radius:10px}
-.logo span{color:var(--goldTx)}
-.nav .links{display:flex;gap:28px;font-size:14px;color:var(--ink2)}
-.nav .links a:hover{color:var(--ink)}
-.nav .btn{min-height:44px;padding:0 20px;font-size:14px}
-@media(max-width:1020px){.nav .links{display:none}}
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px var(--pad);transition:background .4s,box-shadow .4s,padding .4s}
+.nav.s{background:rgba(12,12,11,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 1px 0 var(--line);padding-block:10px}
+.logo{display:flex;align-items:center;gap:12px;font:800 14px/1 var(--head);letter-spacing:.24em}
+.logo img{width:40px;height:40px;border-radius:10px;box-shadow:0 0 0 1px var(--line2)}
+.logo span{color:var(--gold)}
+.nav .links{display:flex;gap:30px;font-size:14px;color:var(--tx2)}
+.nav .links a{position:relative}
+.nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav .links a:hover{color:var(--tx)}.nav .links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{min-height:44px;padding:0 22px;font-size:14px}
+@media(max-width:1060px){.nav .links{display:none}}
 @media(max-width:560px){.nav .btn{display:none}}
 
-/* ===== ПЕРВЫЙ ЭКРАН: арка с фото, по лаку проходит блик, как после полировки ===== */
-.hero{min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,80px);align-items:center;padding:110px var(--pad) 64px}
-.hero .k{opacity:0;transition:opacity .8s var(--ease) .1s}
-.hero h1{font:800 clamp(34px,4.2vw,64px)/.98 var(--head);letter-spacing:-.045em;margin-top:22px}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.07em}
-.hero h1 .ln b{display:block;font-weight:inherit;transform:translateY(105%);transition:transform 1.1s var(--ease)}
-.hero h1 .ln:nth-child(2) b{transition-delay:.08s}.hero h1 .ln:nth-child(3) b{transition-delay:.16s}
-.hero h1 .gd{color:var(--goldTx)}
-.hero h1 .mt{color:var(--mut)}
-.hero .lead{max-width:540px;margin-top:28px;font-size:clamp(16px,1.3vw,19px);color:var(--ink2)}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.hero .facts{display:flex;gap:clamp(20px,3vw,44px);margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
-.facts b{display:block;font:800 22px/1.1 var(--head);font-variant-numeric:tabular-nums}
-.facts b i{font-style:normal;color:var(--gold)}
-.facts small{font-size:13px;color:var(--mut)}
-.hero .lead,.hero .cta,.hero .facts{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.hero.go .k,.hero.go .lead,.hero.go .cta,.hero.go .facts{opacity:1;transform:none}
-.hero.go .lead{transition-delay:.35s}.hero.go .cta{transition-delay:.45s}.hero.go .facts{transition-delay:.55s}
+/* ===== ПЕРВЫЙ ЭКРАН: текст слева, справа две ленты настоящих работ из канала едут навстречу ===== */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,80px);align-items:center;padding:120px var(--pad) 70px;overflow:hidden}
+/* тёплый свет за текстом */
+.hero::before{content:"";position:absolute;left:-10%;top:10%;width:60vw;height:60vw;max-width:900px;max-height:900px;background:radial-gradient(closest-side,rgba(var(--gold-rgb),.16),transparent 70%);pointer-events:none}
+.hero .t{position:relative;z-index:2}
+.hero h1{font:800 clamp(38px,5vw,84px)/.92 var(--head);letter-spacing:-.055em;margin-top:26px}
+.hero h1 .ln{display:block;overflow:hidden;padding:.06em 0 .1em;margin:-.06em 0 -.1em}
+.hero h1 .ln b{display:block;font-weight:inherit;transform:translateY(110%) rotate(2deg);transform-origin:left top;transition:transform 1.3s var(--ease)}
+.hero h1 .ln:nth-child(2) b{transition-delay:.1s}.hero h1 .ln:nth-child(3) b{transition-delay:.2s}
 .hero.go h1 .ln b{transform:none}
-.arch{position:relative;justify-self:end;width:min(100%,500px)}
-.arch::before{content:"";position:absolute;inset:-12px;border:1px solid var(--gold);border-radius:999px 999px 34px 34px;pointer-events:none;clip-path:inset(100% 0 0 0);transition:clip-path 2.2s var(--ease) .5s}
-.hero.go .arch::before{clip-path:inset(0)}
-.arch .fr{position:relative;aspect-ratio:3/4;border-radius:999px 999px 26px 26px;overflow:hidden;background:var(--dark);isolation:isolate}
-.arch .fr img{width:100%;height:100%;object-fit:cover;filter:brightness(.25) saturate(.6);transform:scale(1.08);transition:filter 1.8s ease .4s,transform 2.6s var(--ease) .2s}
-.hero.go .arch .fr img{filter:none;transform:none}
-/* блик по лаку: светлая полоса проходит по фото один раз */
-.arch .fr::after{content:"";position:absolute;inset:-20% -60%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);mix-blend-mode:soft-light;transform:translateX(-70%);pointer-events:none}
-.hero.go .arch .fr::after{animation:shine 2.2s var(--ease) 1.4s both}
-@keyframes shine{to{transform:translateX(70%)}}
-.arch .tag{position:absolute;left:-28px;bottom:42px;display:flex;gap:14px;align-items:center;padding:12px 18px 12px 12px;background:var(--card);border-radius:18px;box-shadow:0 20px 50px -20px rgba(0,0,0,.35);opacity:0;transform:translateY(14px);transition:all .9s var(--ease) 1.5s;max-width:calc(100% - 24px)}
-.hero.go .arch .tag{opacity:1;transform:none}
-.arch .tag img{width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none}
-.arch .tag b{display:block;font:700 14px/1.25 var(--body)}
-.arch .tag small{font-size:13px;color:var(--mut)}
+.hero h1 .mt{color:var(--mut)}
+.hero .lead{max-width:520px;margin-top:30px;font-size:clamp(16px,1.25vw,18.5px);color:var(--tx2)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero .k,.hero .lead,.hero .cta,.hero .facts{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.hero.go .k,.hero.go .lead,.hero.go .cta,.hero.go .facts{opacity:1;transform:none}
+.hero.go .lead{transition-delay:.4s}.hero.go .cta{transition-delay:.5s}.hero.go .facts{transition-delay:.6s}
+.facts{display:flex;gap:clamp(22px,3.4vw,52px);margin-top:54px;padding-top:26px;border-top:1px solid var(--line)}
+.facts b{display:block;font:800 26px/1 var(--head);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.facts small{display:block;margin-top:8px;font-size:13px;color:var(--mut)}
+.reel{position:relative;height:min(84svh,820px);display:grid;grid-template-columns:1fr 1fr;gap:14px;-webkit-mask:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask:linear-gradient(transparent,#000 14%,#000 86%,transparent);opacity:0;transition:opacity 1.6s ease .3s}
+.hero.go .reel{opacity:1}
+.col{display:flex;flex-direction:column;gap:14px;animation:up 60s linear infinite}
+.col.dn{animation-name:dn;margin-top:-40%}
+.col figure{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:var(--bg3);flex:none}
+.col img{width:100%;height:100%;object-fit:cover}
+.col figcaption{position:absolute;left:10px;bottom:10px;padding:7px 11px;border-radius:999px;background:rgba(12,12,11,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;color:var(--tx2)}
+.reel:hover .col{animation-play-state:paused}
+@keyframes up{to{transform:translateY(-50%)}}
+@keyframes dn{from{transform:translateY(-50%)}to{transform:none}}
+@keyframes lf{to{transform:translateX(-50%)}}
 @media(max-width:900px){
- .hero{grid-template-columns:1fr;padding-top:92px;min-height:0}
- .arch{order:-1;justify-self:center;width:min(100%,420px)}
- .arch .fr{aspect-ratio:4/4.3}
- .arch .tag{left:12px;bottom:14px}
- .hero .facts{gap:18px;justify-content:space-between}
+ .hero{grid-template-columns:minmax(0,1fr);padding-top:100px;min-height:0}
+ .reel{height:auto;display:block;min-width:0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);margin-inline:calc(var(--pad)*-1)}
+ .col{flex-direction:row;animation-name:lf;width:max-content}
+ .col.dn{display:none}
+ .col figure{width:170px}
+ .facts{justify-content:space-between;gap:16px}
 }
-.run{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;background:var(--paper2)}
-.run div{display:flex;gap:44px;width:max-content;animation:run 46s linear infinite;font:700 clamp(18px,2vw,26px)/1 var(--head);letter-spacing:-.01em;white-space:nowrap}
-.run span{display:inline-flex;align-items:center;gap:44px}
-.run span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
-@keyframes run{to{transform:translateX(-50%)}}
 
-/* ===== ЧТО СЛУЧИЛОСЬ С МАШИНОЙ: вкладки проблем, настоящие кадры из канала ===== */
+/* ===== ДОВЕРИЕ: строка цифр с линиями ===== */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);padding:0 var(--pad)}
+.trust div{padding:34px 0 34px 28px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0;padding-left:0}
+.trust b{display:block;font:800 clamp(30px,3.4vw,52px)/1 var(--head);letter-spacing:-.04em}
+.trust small{display:block;margin-top:10px;font-size:13.5px;color:var(--mut)}
+@media(max-width:760px){.trust{grid-template-columns:1fr 1fr}.trust div{padding:24px 0 24px 18px}.trust div:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}.trust div:nth-child(4){border-top:1px solid var(--line)}}
+
+/* ===== ЧТО СЛУЧИЛОСЬ: слева список проблем с номерами, справа кадр ===== */
 .cs-h{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
-.cs-h p{max-width:420px;color:var(--dmut)}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(32px,4vw,52px)}
-.tabs button{padding:12px 18px;border:1px solid var(--dline);border-radius:999px;font-size:15px;transition:all .3s var(--ease)}
-.tabs button:hover{border-color:rgba(255,255,255,.35)}
-.tabs button[aria-selected=true]{background:var(--gold);border-color:var(--gold);color:#1a1206;font-weight:600}
-.case{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,64px);margin-top:28px;align-items:center}
-.cv{position:relative;border-radius:24px;overflow:hidden;background:var(--dark2);aspect-ratio:4/3.2}
+.cs-h p{max-width:420px;color:var(--mut)}
+.case{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,72px);margin-top:clamp(40px,5vw,72px);align-items:start}
+.tabs{display:grid;border-top:1px solid var(--line)}
+.tabs button{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;text-align:left;padding:20px 0;border-bottom:1px solid var(--line);font:700 clamp(18px,1.6vw,23px)/1.2 var(--head);letter-spacing:-.02em;color:var(--mut);transition:color .4s}
+.tabs button i{font:600 12px/1 var(--body);font-style:normal;letter-spacing:.1em;color:var(--mut)}
+.tabs button::after{content:"";width:9px;height:9px;border-radius:50%;border:1px solid var(--line2);transition:all .4s}
+.tabs button:hover{color:var(--tx2)}
+.tabs button[aria-selected=true]{color:var(--tx)}
+.tabs button[aria-selected=true] i{color:var(--gold)}
+.tabs button[aria-selected=true]::after{background:var(--gold);border-color:var(--gold);box-shadow:0 0 14px rgba(var(--gold-rgb),.8)}
+.cbox{display:grid;grid-template-columns:1fr;gap:28px}
+.cv{position:relative;border-radius:22px;overflow:hidden;background:var(--bg2);aspect-ratio:16/11;box-shadow:0 0 0 1px var(--line)}
 .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cv .lb{position:absolute;top:14px;padding:8px 12px;border-radius:999px;font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;background:rgba(15,15,14,.72);z-index:3}
-.cv .lb.l{left:14px}.cv .lb.r{right:14px;color:var(--gold)}
-/* пара «до/после» рядом */
-.cv.pair{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--dark)}
+.cv .lb{position:absolute;top:14px;padding:8px 13px;border-radius:999px;font:600 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;background:rgba(12,12,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:3}
+.cv .lb.l{left:14px;color:var(--tx2)}.cv .lb.r{right:14px;color:var(--gold)}
+.cv.pair{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--bg)}
 .cv.pair figure{position:relative;overflow:hidden}
-.cv.pair figure:first-child img{filter:saturate(.85)}
-/* ползунок до/после: тянем пальцем или стрелками */
 .cv.sl{cursor:ew-resize;touch-action:pan-y}
 .cv.sl .af{clip-path:inset(0 0 0 var(--p,50%))}
-.cv.sl .hd{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:var(--gold);z-index:2;translate:-1px 0}
-.cv.sl .hd i{position:absolute;top:50%;left:50%;translate:-50% -50%;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#1a1206;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.cv.sl .hd{position:absolute;top:0;bottom:0;left:var(--p,50%);width:1px;background:var(--grad);z-index:2;box-shadow:0 0 20px rgba(var(--gold-rgb),.7)}
+.cv.sl .hd i{position:absolute;top:50%;left:50%;translate:-50% -50%;width:50px;height:50px;border-radius:50%;background:var(--grad);color:var(--goldInk);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .cv.sl .hd svg{width:20px;height:20px}
-.cv .fade{transition:opacity .45s}
-.ct-txt h3{font:800 clamp(26px,2.6vw,38px)/1.05 var(--head);letter-spacing:-.025em}
-.ct-txt .story{margin-top:16px;color:var(--dmut);font-size:16px}
-.ct-txt .story b{color:var(--dtx);font-weight:600}
-.ct-txt ul{list-style:none;margin:22px 0 0;display:grid;gap:10px}
-.ct-txt li{display:flex;gap:12px;align-items:baseline;font-size:15.5px}
-.ct-txt li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold);translate:0 -2px}
-.ct-txt .pr{display:flex;align-items:baseline;gap:12px;margin-top:26px;padding-top:20px;border-top:1px solid var(--dline)}
-.ct-txt .pr b{font:800 26px/1 var(--head);letter-spacing:-.02em}
-.ct-txt .pr small{color:var(--dmut);font-size:13.5px}
-.ct-txt .btn{margin-top:22px}
-.case.sw .cv,.case.sw .ct-txt{animation:sw .55s var(--ease) both}
-@keyframes sw{from{opacity:0;transform:translateY(12px)}}
-@media(max-width:900px){.case{grid-template-columns:1fr}.cv{aspect-ratio:4/3.4}.tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--pad)*-1);padding:0 var(--pad) 4px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs button{flex:none}}
+.ct-txt{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
+.ct-txt h3{font:800 clamp(24px,2.2vw,32px)/1.05 var(--head);letter-spacing:-.03em}
+.ct-txt .story{margin-top:14px;color:var(--tx2);font-size:15.5px}
+.ct-txt .story b{color:var(--gold);font-weight:600}
+.ct-txt ul{list-style:none;display:grid;gap:10px;align-content:start}
+.ct-txt li{display:flex;gap:12px;font-size:15px;color:var(--tx2)}
+.ct-txt li::before{content:"";flex:none;width:14px;height:1px;background:var(--gold);margin-top:11px}
+.ct-act{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line)}
+.ct-act b{display:block;font:800 28px/1 var(--head);letter-spacing:-.03em}
+.ct-act small{color:var(--mut);font-size:13.5px}
+.cbox.sw .cv,.cbox.sw .ct-txt{animation:sw .6s var(--ease) both}
+@keyframes sw{from{opacity:0;transform:translateY(14px)}}
+@media(max-width:980px){.case{grid-template-columns:1fr}.ct-txt{grid-template-columns:1fr}
+ .tabs{display:flex;overflow-x:auto;gap:8px;border:0;margin-inline:calc(var(--pad)*-1);padding:0 var(--pad) 4px;scrollbar-width:none}
+ .tabs::-webkit-scrollbar{display:none}
+ .tabs button{display:flex;flex:none;padding:12px 16px;border:1px solid var(--line);border-radius:999px;font:600 14.5px/1 var(--body);letter-spacing:0}
+ .tabs button i,.tabs button::after{display:none}
+ .tabs button[aria-selected=true]{background:var(--grad);color:var(--goldInk);border-color:transparent}
+ .cv{aspect-ratio:4/3.5}}
 
-/* ===== РАБОТЫ «В МОИХ РУКАХ» ===== */
-.wk-h{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.wk-h p{max-width:400px;color:var(--ink2)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin-top:clamp(32px,4vw,52px)}
-.wc{background:var(--card);border-radius:22px;overflow:hidden;cursor:zoom-in;transition:transform .5s var(--ease),box-shadow .5s}
-.wc:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
-.wc .ph{aspect-ratio:4/4.4;overflow:hidden;background:var(--paper2)}
-.wc .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.wc:hover .ph img{transform:scale(1.05)}
-.wc .tx{padding:18px 20px 20px}
-.wc small{font:600 11.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--goldTx)}
-.wc h3{font:800 21px/1.15 var(--head);letter-spacing:-.02em;margin:8px 0 10px}
-.wc p{font-size:14.5px;color:var(--ink2)}
-.wc[hidden]{display:none}
-.more-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:32px}
-@media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.wc .ph{aspect-ratio:4/3.6}}
+/* ===== ЦИТАТА: слова проявляются по мере прокрутки ===== */
+.say{text-align:center;padding-block:clamp(90px,12vw,180px)}
+.say .k{justify-content:center}
+.say p{font:700 clamp(26px,3.6vw,56px)/1.18 var(--head);letter-spacing:-.035em;max-width:1180px;margin:34px auto 0}
+.say p span{opacity:.16;transition:opacity .3s}
+.say p span.on{opacity:1}
+.say cite{display:block;margin-top:30px;font:600 12px/1 var(--body);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
 
-/* ===== УСЛУГИ ===== */
-.sv{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,96px);background:var(--paper2)}
-.sv .side p{margin-top:22px;color:var(--ink2);max-width:380px}
-.sv details{border-bottom:1px solid var(--line)}
-.sv summary{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:22px 0;cursor:pointer}
-.sv summary::-webkit-details-marker{display:none}
-.sv summary .n{font:700 13px/1 var(--head);color:var(--goldTx);width:26px}
-.sv summary b{font:800 clamp(20px,1.9vw,26px)/1.15 var(--head);letter-spacing:-.02em}
-.pm{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);position:relative;transition:all .3s}
-.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;translate:-50% -50%;transition:rotate .3s}
+/* ===== РАБОТЫ: горизонтальная галерея, на ПК едет вбок при прокрутке вниз ===== */
+.hs{padding:0;height:var(--len,auto)}
+.hs-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(26px,4vh,48px)}
+.hs-h{display:flex;justify-content:space-between;align-items:end;gap:24px;padding:0 var(--pad)}
+.hs-h p{max-width:380px;color:var(--mut);font-size:15px}
+.track{display:flex;gap:18px;padding:0 var(--pad);width:max-content;will-change:transform}
+.wc{position:relative;flex:none;width:clamp(240px,22vw,340px);cursor:zoom-in}
+.wc .ph{position:relative;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:var(--bg3)}
+.wc .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.wc:hover .ph img{transform:scale(1.06)}
+.wc .n{position:absolute;left:16px;top:14px;font:700 13px/1 var(--head);color:var(--gold);z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.wc .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.55));pointer-events:none}
+.wc small{display:block;margin-top:18px;font:600 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.wc h3{font:800 21px/1.15 var(--head);letter-spacing:-.025em;margin:9px 0 6px}
+.wc p{font-size:14px;color:var(--mut)}
+.wc.end{display:flex;flex-direction:column;justify-content:center;gap:20px;padding:30px;border:1px solid var(--line2);border-radius:20px;aspect-ratio:3/4;align-self:flex-start;cursor:default;background:radial-gradient(120% 80% at 0 0,rgba(var(--gold-rgb),.12),transparent 60%)}
+.wc.end b{font:800 28px/1.05 var(--head);letter-spacing:-.03em}
+.wc.end span{color:var(--mut);font-size:15px}
+.prog{height:1px;background:var(--line);margin:0 var(--pad);position:relative}
+.prog i{position:absolute;inset:0;background:var(--grad);transform-origin:left;transform:scaleX(var(--pr,0))}
+@media(max-width:900px),(prefers-reduced-motion:reduce){
+ .hs{height:auto;padding:clamp(80px,11vw,160px) 0}
+ .hs-pin{position:static;height:auto}
+ .track{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;scrollbar-width:none;transform:none!important;scroll-padding-inline:var(--pad)}
+ .track::-webkit-scrollbar{display:none}
+ .wc{scroll-snap-align:start;width:74vw;max-width:320px}
+ .prog{display:none}
+}
+
+/* ===== УСЛУГИ: строки с номерами, на ПК за курсором едет фото услуги ===== */
+.sv-h{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.sv-h p{max-width:420px;color:var(--mut)}
+.svl{margin-top:clamp(36px,5vw,64px);border-top:1px solid var(--line)}
+.svl details{border-bottom:1px solid var(--line)}
+.svl summary{list-style:none;display:grid;grid-template-columns:70px 1fr auto auto;gap:20px;align-items:center;padding:clamp(20px,2.4vw,32px) 0;cursor:pointer}
+.svl summary::-webkit-details-marker{display:none}
+.svl summary .n{font:600 13px/1 var(--body);color:var(--gold);letter-spacing:.1em}
+.svl summary b{font:800 clamp(24px,3.2vw,48px)/1 var(--head);letter-spacing:-.04em;transition:color .4s,transform .6s var(--ease)}
+.svl summary small{font-size:14px;color:var(--mut);text-align:right}
+.svl details:hover summary b{transform:translateX(10px)}
+.svl details:hover summary b,.svl details[open] summary b{color:var(--gold)}
+.pm{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);position:relative;transition:all .4s}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.5px;background:currentColor;translate:-50% -50%;transition:rotate .4s}
 .pm::after{rotate:90deg}
-details[open]>summary .pm{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+details[open]>summary .pm{background:var(--grad);color:var(--goldInk);border-color:transparent}
 details[open]>summary .pm::after{rotate:0deg}
-.rows{padding:0 0 22px 44px}
-.row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px dashed var(--line);font-size:15.5px}
-.row b{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rows{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;padding:0 0 30px 90px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px dashed var(--line);font-size:15.5px;color:var(--tx2)}
+.row b{font-weight:600;white-space:nowrap;color:var(--tx);font-variant-numeric:tabular-nums}
 .row b.f{color:var(--mut);font-weight:500}
-.rows .btn{margin-top:16px;min-height:46px}
-.legend{margin-top:20px;font-size:13.5px;color:var(--mut)}
-.rr{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-top:28px;padding:20px 22px;border-radius:20px;background:var(--dark);color:var(--dtx);transition:transform .4s var(--ease)}
-.rr:hover{transform:translateY(-3px)}
-.rr b{display:block;font:800 19px/1.2 var(--head)}
-.rr small{color:var(--dmut);font-size:14px}
-.rr i{flex:none;width:44px;height:44px;border-radius:50%;background:#ff7a1f;color:#140a03;display:grid;place-items:center;font-style:normal;font-weight:700}
-@media(max-width:900px){.sv{grid-template-columns:1fr}.rows{padding-left:0}}
+.rows .btn{margin-top:18px;min-height:48px;grid-column:1/-1;justify-self:start}
+.legend{margin-top:22px;font-size:13.5px;color:var(--mut)}
+.peek{position:fixed;left:0;top:0;z-index:20;width:260px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;pointer-events:none;opacity:0;scale:.85;transition:opacity .35s,scale .5s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px var(--line2)}
+.peek.on{opacity:1;scale:1}
+.peek img{width:100%;height:100%;object-fit:cover}
+.rr{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-top:40px;padding:24px 28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(100deg,#141412,#1d1a16);transition:border-color .4s,transform .5s var(--ease)}
+.rr:hover{border-color:#ff7a1f;transform:translateY(-3px)}
+.rr b{display:block;font:800 21px/1.2 var(--head);letter-spacing:-.02em}
+.rr small{color:var(--mut);font-size:14px}
+.rr i{flex:none;width:48px;height:48px;border-radius:50%;background:#ff7a1f;color:#140a03;display:grid;place-items:center;font-style:normal;font-weight:700}
+@media(max-width:900px){.svl summary{grid-template-columns:34px 1fr auto;gap:14px}.svl summary small{display:none}.rows{grid-template-columns:1fr;padding-left:0}.peek{display:none}}
 
 /* ===== ОТЗЫВЫ ===== */
-.rv{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,96px)}
-.score{margin-top:30px;display:flex;align-items:center;gap:18px}
-.score b{font:800 72px/1 var(--head);letter-spacing:-.04em}
-.score span{font-size:14px;color:var(--dmut);line-height:1.5}
-.score i{font-style:normal;color:var(--gold);letter-spacing:2px}
-.rv .lnk{margin-top:28px}
-.qt{display:flex;flex-direction:column;justify-content:space-between;min-height:330px}
-.qt .mark{font:800 120px/.7 var(--head);color:var(--gold);height:60px}
-.qt blockquote{font:600 clamp(22px,2.6vw,36px)/1.28 var(--head);letter-spacing:-.02em;transition:opacity .45s,transform .45s var(--ease)}
+.rv{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,96px);background:var(--bg2);border-block:1px solid var(--line)}
+.score{margin-top:34px;display:flex;align-items:center;gap:20px}
+.score b{font:800 84px/1 var(--head);letter-spacing:-.05em}
+.score span{font-size:14px;color:var(--mut);line-height:1.5}
+.score i{font-style:normal;color:var(--gold);letter-spacing:3px}
+.rv .lnk{margin-top:30px}
+.qt{display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.qt .mark{font:800 140px/.7 var(--head);height:64px}
+.qt blockquote{font:600 clamp(22px,2.5vw,36px)/1.3 var(--head);letter-spacing:-.025em;transition:opacity .45s,transform .45s var(--ease)}
 .qt blockquote.out{opacity:0;transform:translateY(12px)}
-.qt .who{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:32px;padding-top:22px;border-top:1px solid var(--dline);flex-wrap:wrap}
+.qt .who{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
 .qt .who b{display:block}
-.qt .who small{color:var(--dmut);font-size:14px}
+.qt .who small{color:var(--mut);font-size:14px}
 .nav2{display:flex;align-items:center;gap:14px}
-.nav2 span{font-size:14px;color:var(--dmut);font-variant-numeric:tabular-nums;min-width:54px;text-align:center}
-.nav2 button{width:48px;height:48px;border-radius:50%;border:1px solid var(--dline);display:grid;place-items:center;transition:all .3s}
+.nav2 span{font-size:14px;color:var(--mut);font-variant-numeric:tabular-nums;min-width:58px;text-align:center}
+.nav2 button{width:50px;height:50px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;transition:all .3s}
 .nav2 button:hover{border-color:var(--gold);color:var(--gold)}
 .nav2 svg{width:18px;height:18px}
-.bar{height:2px;background:var(--dline);margin-top:18px;overflow:hidden;border-radius:2px}
-.bar i{display:block;height:100%;background:var(--gold);transform-origin:left;transform:scaleX(0)}
+.bar{height:1px;background:var(--line);margin-top:18px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grad);transform-origin:left;transform:scaleX(0)}
 .bar i.go{animation:bar 7s linear both}
 @keyframes bar{to{transform:scaleX(1)}}
-@media(max-width:900px){.rv{grid-template-columns:1fr}.qt{min-height:0}.score b{font-size:56px}}
+@media(max-width:900px){.rv{grid-template-columns:1fr}.qt{min-height:0}.score b{font-size:62px}}
 
 /* ===== ЭТАПЫ ===== */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px);margin-top:clamp(36px,5vw,64px);position:relative}
-.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--line)}
-.steps .ln2{position:absolute;left:0;top:27px;height:1px;width:100%;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform 2s var(--ease)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px);margin-top:clamp(40px,5vw,72px);position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:28px;height:1px;background:var(--line)}
+.steps .ln2{position:absolute;left:0;top:28px;height:1px;width:100%;background:var(--grad);transform-origin:left;transform:scaleX(0);transition:transform 2.2s var(--ease)}
 .steps.in .ln2{transform:none}
-.sp .n{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);font:700 15px/1 var(--head);transition:all .6s var(--ease);position:relative}
-.steps.in .sp .n{border-color:var(--gold);background:var(--gold);color:#1a1206}
-.steps.in .sp:nth-of-type(2) .n{transition-delay:.5s}.steps.in .sp:nth-of-type(3) .n{transition-delay:1s}.steps.in .sp:nth-of-type(4) .n{transition-delay:1.5s}
-.sp h3{font:700 19px/1.2 var(--head);margin:22px 0 10px}
-.sp p{font-size:15px;color:var(--ink2)}
+.sp .n{position:relative;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line2);font:700 14px/1 var(--head);color:var(--gold);transition:all .6s var(--ease)}
+.steps.in .sp .n{background:var(--grad);color:var(--goldInk);border-color:transparent;box-shadow:0 0 30px rgba(var(--gold-rgb),.35)}
+.steps.in .sp:nth-of-type(2) .n{transition-delay:.55s}.steps.in .sp:nth-of-type(3) .n{transition-delay:1.1s}.steps.in .sp:nth-of-type(4) .n{transition-delay:1.65s}
+.sp h3{font:800 20px/1.2 var(--head);letter-spacing:-.02em;margin:24px 0 10px}
+.sp p{font-size:15px;color:var(--mut)}
 @media(max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:34px 20px}.steps::before,.steps .ln2{display:none}}
 @media(max-width:520px){.steps{grid-template-columns:1fr}}
 
 /* ===== ВОПРОСЫ ===== */
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,96px);padding-top:0}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font:700 clamp(17px,1.5vw,20px)/1.3 var(--head);cursor:pointer}
+.faq summary{list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font:700 clamp(17px,1.5vw,21px)/1.3 var(--head);letter-spacing:-.01em;cursor:pointer}
 .faq summary::-webkit-details-marker{display:none}
-.faq dd{padding:0 0 22px;color:var(--ink2);max-width:640px}
+.faq dd{padding:0 0 24px;color:var(--tx2);max-width:640px}
+.faq dd a{color:var(--gold);text-decoration:underline}
 @media(max-width:900px){.faq{grid-template-columns:1fr}}
 
 /* ===== КОНТАКТЫ ===== */
-.ctc{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,72px);align-items:center}
-.ctc dl{margin-top:34px;display:grid;gap:22px}
-.ctc dt{font-size:13px;color:var(--dmut);margin-bottom:4px}
-.ctc dd{font:600 18px/1.4 var(--body)}
-.ctc dd small{display:block;font:400 14px/1.4 var(--body);color:var(--dmut)}
+.ctc{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,72px);align-items:center;background:var(--bg2);border-top:1px solid var(--line)}
+.ctc dl{margin-top:36px;display:grid;gap:22px}
+.ctc dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.ctc dd{font:600 19px/1.4 var(--body)}
+.ctc dd small{display:block;font:400 14px/1.4 var(--body);color:var(--mut)}
 .ctc dd a:hover{color:var(--gold)}
-.ctc .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.ctc .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
 /* подложка 1200×900: те же пропорции, чтобы метка стояла на Тюменском проезде */
-.map{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:#121212}
+.map{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:#121212;box-shadow:0 0 0 1px var(--line)}
 .map>img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;opacity:.9}
 .map .pin{position:absolute;left:65%;top:73%;translate:-50% -100%;display:flex;flex-direction:column;align-items:center}
-.map .pin span{display:flex;gap:10px;align-items:center;padding:8px 14px 8px 8px;border-radius:14px;background:var(--paper);color:var(--ink);font-size:13px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);white-space:nowrap}
+.map .pin span{display:flex;gap:10px;align-items:center;padding:8px 14px 8px 8px;border-radius:14px;background:var(--tx);color:var(--bg);font-size:13px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);white-space:nowrap}
 .map .pin img{width:30px;height:30px;border-radius:8px}
-.map .pin u{width:2px;height:22px;background:var(--gold)}
-.map .pin u::after{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--gold);translate:-5px 18px;animation:ping 2.2s infinite}
+.map .pin u{width:1px;height:22px;background:var(--gold)}
+.map .pin u::after{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--gold);translate:-5.5px 18px;animation:ping 2.2s infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(var(--gold-rgb),.6)}70%,100%{box-shadow:0 0 0 18px rgba(var(--gold-rgb),0)}}
 .map .top{position:absolute;left:14px;top:14px}
-.chip2{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(15,15,14,.75);font-size:13px}
+.chip2{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(12,12,11,.78);font-size:13px}
 .chip2 i{width:8px;height:8px;border-radius:50%;background:#5bd68a}
 .chip2.cl i{background:#e0715b}
 .map .bt{position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px}
 .map .bt .btn{flex:1;min-height:48px}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
-.map .x{position:absolute;right:12px;top:12px;z-index:4;width:40px;height:40px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:22px;display:none}
+.map .x{position:absolute;right:12px;top:12px;z-index:4;width:40px;height:40px;border-radius:50%;background:var(--tx);color:var(--bg);font-size:22px;display:none}
 .map.live .x{display:block}
 .osm{position:absolute;right:14px;top:16px;font-size:10px;color:rgba(255,255,255,.5)}
 @media(max-width:900px){.ctc{grid-template-columns:1fr}.map{aspect-ratio:4/3.6}}
-.ft{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:26px var(--pad) calc(26px + env(safe-area-inset-bottom));font-size:13px;color:var(--dmut);background:var(--dark);border-top:1px solid var(--dline)}
+.ft{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px var(--pad) calc(28px + env(safe-area-inset-bottom));font-size:13px;color:var(--mut);border-top:1px solid var(--line)}
 .ft a:hover{color:var(--gold)}
 
-.mbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;padding:8px;border-radius:999px;background:rgba(20,20,18,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(140%);transition:transform .5s var(--ease)}
+.mbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;padding:8px;border-radius:999px;background:rgba(20,20,18,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 0 0 1px var(--line2);transform:translateY(140%);transition:transform .5s var(--ease)}
 .mbar .btn{min-height:46px;flex:1;padding:0 14px}
-.mbar .btn.o{flex:0 0 46px;padding:0;border-color:rgba(255,255,255,.18);color:var(--dtx)}
+.mbar .btn.o{flex:0 0 46px;padding:0}
 .mbar.on{transform:none}
 @media(max-width:900px){.mbar{display:flex}}
 
-.lbx{position:fixed;inset:0;z-index:60;background:rgba(10,10,9,.94);display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.lbx{position:fixed;inset:0;z-index:60;background:rgba(8,8,7,.95);display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .lbx.on{opacity:1;visibility:visible}
 .lbx img{max-height:78svh;max-width:min(92vw,820px);border-radius:16px;object-fit:contain}
-.lbx p{color:var(--dtx);text-align:center;margin-top:14px;font-size:15px}
-.lbx .x{position:absolute;right:16px;top:16px;width:46px;height:46px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:24px}
+.lbx p{color:var(--tx2);text-align:center;margin-top:14px;font-size:15px}
+.lbx .x{position:absolute;right:16px;top:16px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);color:var(--tx);font-size:24px}
 
 .bk{position:fixed;inset:0;z-index:70;visibility:hidden}
 .bk.on{visibility:visible}
-.bk-bg{position:absolute;inset:0;background:rgba(10,10,9,.6);opacity:0;transition:opacity .35s}
+.bk-bg{position:absolute;inset:0;background:rgba(5,5,4,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .35s}
 .bk.on .bk-bg{opacity:1}
-.bk-card{position:absolute;left:50%;top:50%;width:min(440px,calc(100% - 32px));translate:-50% -46%;opacity:0;background:var(--card);color:var(--ink);border-radius:26px;padding:28px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);transition:translate .45s var(--ease),opacity .35s}
+.bk-card{position:absolute;left:50%;top:50%;width:min(450px,calc(100% - 32px));translate:-50% -46%;opacity:0;background:var(--bg2);color:var(--tx);border-radius:26px;padding:30px;box-shadow:0 40px 90px -20px rgba(0,0,0,.8),0 0 0 1px var(--line2);transition:translate .45s var(--ease),opacity .35s}
 .bk.on .bk-card{translate:-50% -50%;opacity:1}
-.bk-x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;font-size:22px;background:var(--paper2)}
-.bk-k{font:600 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--goldTx)}
-.bk h3{font:800 26px/1.1 var(--head);letter-spacing:-.02em;margin:12px 0 8px}
-.bk-sub{font-size:14.5px;color:var(--ink2)}
-.bk-msg{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--paper);font-size:13.5px;color:var(--ink2)}
+.bk-x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;font-size:22px;border:1px solid var(--line)}
+.bk-k{font:600 11px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.bk h3{font:800 27px/1.1 var(--head);letter-spacing:-.03em;margin:14px 0 8px}
+.bk-sub{font-size:14.5px;color:var(--tx2)}
+.bk-msg{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--bg3);font-size:13.5px;color:var(--tx2);border-left:2px solid var(--gold)}
 .bk-list{display:grid;gap:8px;margin-top:18px}
-.bk-o{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;transition:border-color .3s}
-.bk-o:hover,.bk-o:focus-visible{border-color:var(--ink)}
-.bk-o i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--ink);color:var(--paper)}
+.bk-o{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;transition:border-color .3s,background .3s}
+.bk-o:hover,.bk-o:focus-visible{border-color:var(--gold);background:rgba(var(--gold-rgb),.06)}
+.bk-o i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--bg3);color:var(--tx)}
 .bk-o i svg{width:20px;height:20px}
 .bk-o[data-ch=tg] i{background:#2aa3e0;color:#fff}
 .bk-o[data-ch=wa] i{background:#25d366;color:#fff}
@@ -308,15 +343,16 @@ details[open]>summary .pm::after{rotate:0deg}
 .bk-o small{font-size:13px;color:var(--mut)}
 .bk-o em{font-style:normal;color:var(--mut)}
 .bk-o[hidden]{display:none}
-.bk-note{margin-top:12px;font-size:13px;color:var(--goldTx);min-height:18px}
+.bk-note{margin-top:12px;font-size:13px;color:var(--gold);min-height:18px}
 @media(max-width:560px){
- .bk-card{top:auto;bottom:0;left:0;width:100%;translate:0 100%;border-radius:26px 26px 0 0;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+ .bk-card{top:auto;bottom:0;left:0;width:100%;translate:0 100%;border-radius:26px 26px 0 0;padding-bottom:calc(30px + env(safe-area-inset-bottom))}
  .bk.on .bk-card{translate:0 0}
 }
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
- .run div{animation:none}
  [data-r]{opacity:1;transform:none}
+ .col{animation:none!important}
+ .say p span{opacity:1}
 }
 </style>
 </head>
@@ -324,117 +360,130 @@ details[open]>summary .pm::after{rotate:0deg}
 
 <nav class="nav" id="nav"><a href="#top" class="logo"><img src="img/logo.jpg" alt="" width="40" height="40">JOHNNY <span>STUDIO</span></a>
  <div class="links"><a href="#case">Что случилось</a><a href="#works">Работы</a><a href="#services">Услуги</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></div>
- <a class="btn i" href="#book" data-book>Записаться</a></nav>
+ <a class="btn g" href="#book" data-book>Записаться</a></nav>
 
 <header class="hero" id="top">
- <div>
+ <div class="t">
   <span class="k">Детейлинг · Москва</span>
-  <h1><span class="ln"><b class="gd">Полировка, вмятины,</b></span><span class="ln"><b>химчистка и плёнка</b></span><span class="ln"><b class="mt">для любой машины.</b></span></h1>
+  <h1><span class="ln"><b>Полировка,</b></span><span class="ln"><b class="gt">вмятины, плёнка</b></span><span class="ln"><b class="mt">для любой машины.</b></span></h1>
   <p class="lead">Вернём кузову блеск, уберём вмятины без покраски, отмоем салон, восстановим фары и защитим плёнкой. Работаем с любыми марками, опыт больше 7 лет.</p>
-  <div class="cta"><a class="btn i" href="#case">Что случилось с машиной?</a><a class="btn o" href="#book" data-book>Записаться</a></div>
-  <div class="facts"><div><b>5,0 <i>★</i></b><small>72 оценки на Картах</small></div><div><b>7+ лет</b><small>в детейлинге</small></div><div><b>Тюменский пр.</b><small>5, стр. 2, парковка</small></div></div>
+  <div class="cta"><a class="btn g" href="#case">Что случилось с машиной?</a><a class="btn o" href="#works">Смотреть работы</a></div>
+  <div class="facts"><div><b>5,0 <span class="gt">★</span></b><small>на Яндекс Картах</small></div><div><b>7+ лет</b><small>в детейлинге</small></div><div><b>10–20</b><small>Тюменский пр.</small></div></div>
  </div>
- <div class="arch">
-  <div class="fr"><img src="img/hero.jpg" alt="Lexus RX 350 после полировки и керамики, в лаке отражаются шестиугольные лампы" width="600" height="800" fetchpriority="high"></div>
-  <div class="tag"><img src="img/lexus-roof.jpg" alt=""><div><b>Lexus RX 350</b><small>Вмятина на крыше, полировка, керамика</small></div></div>
+ <!-- две ленты: фото из Telegram-канала Джони. Наведение ставит на паузу -->
+ <div class="reel" aria-hidden="true">
+  <div class="col" id="c1"></div><div class="col dn" id="c2"></div>
  </div>
 </header>
 
-<div class="run" aria-hidden="true"><div><span>Полировка</span><span>Керамика</span><span>Вмятины без покраски</span><span>Химчистка</span><span>Плёнки</span><span>Тонировка</span><span>Фары</span><span>Диски и суппорты</span><span>Полировка</span><span>Керамика</span><span>Вмятины без покраски</span><span>Химчистка</span><span>Плёнки</span><span>Тонировка</span><span>Фары</span><span>Диски и суппорты</span></div></div>
+<div class="trust" data-r>
+ <div><b class="gt">5,0</b><small>72 оценки на Яндекс Картах</small></div>
+ <div><b>7+</b><small>лет в детейлинге</small></div>
+ <div><b>PDR</b><small>вмятины без покраски, лак остаётся заводской</small></div>
+ <div><b>Любые</b><small>марки: от Kia до BMW X7</small></div>
+</div>
 
 <main>
 <!-- ФИШКА: выбор проблемы → настоящий кадр из канала → что делаем → сообщение с темой -->
-<section class="dk" id="case">
- <div class="cs-h"><div><span class="k" data-r>Подбор</span><h2 data-r>Что случилось<br><em>с машиной?</em></h2></div>
+<section id="case">
+ <div class="cs-h"><div><span class="k" data-r>Подбор</span><h2>Что случилось<br><em>с машиной?</em></h2></div>
   <p data-r>Выберите, что беспокоит. Покажем похожую машину из нашего бокса и что с ней сделали. Цену по фото назовём в чате.</p></div>
- <div class="tabs" role="tablist" id="tabs" data-r></div>
- <div class="case" id="caseBox" role="tabpanel">
-  <div class="cv" id="cv"></div>
-  <div class="ct-txt"><h3 id="cT"></h3><p class="story" id="cS"></p><ul id="cL"></ul>
-   <div class="pr"><b id="cP"></b><small id="cPs"></small></div>
-   <a class="btn g" href="#book" data-book data-case>Прислать фото и узнать цену</a></div>
+ <div class="case">
+  <div class="tabs" role="tablist" id="tabs" data-r></div>
+  <div class="cbox" id="caseBox" role="tabpanel">
+   <div class="cv" id="cv"></div>
+   <div class="ct-txt"><div><h3 id="cT"></h3><p class="story" id="cS"></p></div><ul id="cL"></ul></div>
+   <div class="ct-act"><div><b id="cP"></b><small id="cPs"></small></div><a class="btn g" href="#book" data-book data-case>Прислать фото и узнать цену</a></div>
+  </div>
  </div>
 </section>
 
-<!-- РАБОТЫ из канала: формат постов Джони «В моих руках…» -->
-<section id="works">
- <div class="wk-h"><div><span class="k" data-r>Работы</span><h2 data-r>В моих<br><em>руках</em></h2></div>
-  <p data-r>Так Евгений подписывает работы в нашем Telegram-канале. Несколько машин оттуда, нажмите на фото, чтобы рассмотреть.</p></div>
- <div class="grid" id="grid">
-  <article class="wc" data-r><div class="ph"><img src="img/gle2.jpg" alt="Mercedes GLE в матовом полиуретане" loading="lazy"></div><div class="tx"><small>Плёнка</small><h3>Mercedes GLE 450d</h3><p>Полная оклейка в матовый полиуретан</p></div></article>
-  <article class="wc" data-r><div class="ph"><img src="img/lexus-roof.jpg" alt="Lexus RX 350 после полировки крыши" loading="lazy"></div><div class="tx"><small>Вмятины и кузов</small><h3>Lexus RX 350</h3><p>Вытянули крышу после падения дерева, покрасили, абразивная полировка и керамика</p></div></article>
-  <article class="wc" data-r><div class="ph"><img src="img/palisade.jpg" alt="Hyundai Palisade после полировки" loading="lazy"></div><div class="tx"><small>Кузов</small><h3>Hyundai Palisade</h3><p>Абразивная полировка и керамика</p></div></article>
-  <article class="wc" data-r><div class="ph"><img src="img/x5.jpg" alt="Белый BMW X5" loading="lazy"></div><div class="tx"><small>Вмятины и кузов</small><h3>BMW X5</h3><p>Вмятины без покраски, полировка, керамика</p></div></article>
-  <article class="wc" data-r><div class="ph"><img src="img/lynk.jpg" alt="Lynk &amp; Co 900 в чёрном глянце" loading="lazy"></div><div class="tx"><small>Плёнка и электроника</small><h3>Lynk &amp; Co 900</h3><p>Оклейка всего кузова в чёрный глянец, бронь лобового, русификация всех мониторов</p></div></article>
-  <article class="wc" data-r><div class="ph"><img src="img/mini.jpg" alt="Mini Cooper S" loading="lazy"></div><div class="tx"><small>Вмятины и кузов</small><h3>Mini Cooper S</h3><p>Вмятины без покраски, полировка, керамика</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/monjaro.jpg" alt="Geely Monjaro" loading="lazy"></div><div class="tx"><small>Кузов и плёнка</small><h3>Geely Monjaro</h3><p>Полировка, керамика, оклейка зон риска</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/x7.jpg" alt="Белый BMW X7" loading="lazy"></div><div class="tx"><small>Кузов</small><h3>BMW X7</h3><p>Абразивная полировка</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/w124.jpg" alt="Салон классического Mercedes-Benz" loading="lazy"></div><div class="tx"><small>Салон</small><h3>Mercedes-Benz, классика</h3><p>Химчистка салона</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/geely-zones.jpg" alt="Geely после оклейки зон риска" loading="lazy"></div><div class="tx"><small>Плёнка</small><h3>Geely Atlas</h3><p>Оклейка зон риска полиуретаном, тонировка задней полусферы LLumar, антидождь</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/duster.jpg" alt="Renault Duster после полировки" loading="lazy"></div><div class="tx"><small>Кузов</small><h3>Renault Duster</h3><p>Абразивная полировка</p></div></article>
-  <article class="wc" hidden><div class="ph"><img src="img/discs.jpg" alt="Диск после реставрации" loading="lazy"></div><div class="tx"><small>Диски</small><h3>Диски и суппорты</h3><p>Покраска, реставрация, ремонт бордюрки, алмазная проточка</p></div></article>
+<!-- ЦИТАТА клиента с Карт: слова загораются по прокрутке -->
+<section class="say" id="say"><span class="k">Отзыв с Яндекс Карт</span>
+ <p id="sayP">Мастер своего дела на 100%: чётко, красиво, самое главное дотошно до каждой мелочи. Лучшая полировка, какую я видел.</p>
+ <cite>Василий К. · полировка</cite></section>
+
+<!-- РАБОТЫ из канала, формат постов Джони «В моих руках…» -->
+<section class="hs" id="works">
+ <div class="hs-pin">
+  <div class="hs-h"><div><span class="k" data-r>Работы</span><h2>В моих<br><em>руках</em></h2></div>
+   <p data-r>Так Евгений подписывает машины в нашем Telegram-канале. Нажмите на фото, чтобы рассмотреть.</p></div>
+  <div class="track" id="track">
+   <article class="wc"><div class="ph"><span class="n">01</span><img src="img/gle2.jpg" alt="Mercedes GLE в матовом полиуретане" loading="lazy"></div><small>Плёнка</small><h3>Mercedes GLE 450d</h3><p>Полная оклейка в матовый полиуретан</p></article>
+   <article class="wc"><div class="ph"><span class="n">02</span><img src="img/lexus-roof.jpg" alt="Lexus RX 350, крыша после полировки" loading="lazy"></div><small>Вмятины и кузов</small><h3>Lexus RX 350</h3><p>Вытянули крышу после падения дерева, покрасили, полировка и керамика</p></article>
+   <article class="wc"><div class="ph"><span class="n">03</span><img src="img/palisade.jpg" alt="Hyundai Palisade после полировки" loading="lazy"></div><small>Кузов</small><h3>Hyundai Palisade</h3><p>Абразивная полировка и керамика</p></article>
+   <article class="wc"><div class="ph"><span class="n">04</span><img src="img/lynk.jpg" alt="Lynk &amp; Co 900 в чёрном глянце" loading="lazy"></div><small>Плёнка и электроника</small><h3>Lynk &amp; Co 900</h3><p>Весь кузов в чёрный глянец, бронь лобового, русификация мониторов</p></article>
+   <article class="wc"><div class="ph"><span class="n">05</span><img src="img/x5.jpg" alt="Белый BMW X5" loading="lazy"></div><small>Вмятины и кузов</small><h3>BMW X5</h3><p>Вмятины без покраски, полировка, керамика</p></article>
+   <article class="wc"><div class="ph"><span class="n">06</span><img src="img/mini.jpg" alt="Mini Cooper S" loading="lazy"></div><small>Вмятины и кузов</small><h3>Mini Cooper S</h3><p>Вмятины без покраски, полировка, керамика</p></article>
+   <article class="wc"><div class="ph"><span class="n">07</span><img src="img/monjaro.jpg" alt="Geely Monjaro" loading="lazy"></div><small>Кузов и плёнка</small><h3>Geely Monjaro</h3><p>Полировка, керамика, оклейка зон риска</p></article>
+   <article class="wc"><div class="ph"><span class="n">08</span><img src="img/x7.jpg" alt="Белый BMW X7" loading="lazy"></div><small>Кузов</small><h3>BMW X7</h3><p>Абразивная полировка</p></article>
+   <article class="wc"><div class="ph"><span class="n">09</span><img src="img/w124.jpg" alt="Салон классического Mercedes-Benz" loading="lazy"></div><small>Салон</small><h3>Mercedes-Benz, классика</h3><p>Химчистка салона</p></article>
+   <article class="wc"><div class="ph"><span class="n">10</span><img src="img/geely-zones.jpg" alt="Geely Atlas после оклейки зон риска" loading="lazy"></div><small>Плёнка</small><h3>Geely Atlas</h3><p>Зоны риска полиуретаном, тонировка LLumar, антидождь</p></article>
+   <div class="wc end"><b>Новые машины<br>каждую неделю</b><span>Все работы с фото и видео в нашем Telegram-канале.</span><a class="btn o" href="https://t.me/johnnypolishmycar" target="_blank" rel="noopener">Открыть канал</a></div>
+  </div>
+  <div class="prog"><i id="prog"></i></div>
  </div>
- <div class="more-row"><button class="btn o" type="button" id="more">Показать ещё 6</button><a class="btn o" href="https://t.me/johnnypolishmycar" target="_blank" rel="noopener">Все работы в Telegram-канале</a></div>
 </section>
 
-<!-- УСЛУГИ. Цены только с Яндекс Карт, остальное «по фото», пока Джони не пришлёт прайс -->
-<section class="sv" id="services">
- <div class="side"><span class="k" data-r>Услуги</span><h2 data-r>Что<br><em>делаем</em></h2>
-  <p data-r>Цена зависит от машины и состояния. Пришлите фото в чат, назовём сумму до начала работ.</p>
-  <a class="rr" href="https://johnny-studio.github.io/" data-r><span><b>Дооснащение Range Rover</b><small>Фары, рестайлинг, мультимедиа. Отдельный сайт</small></span><i>→</i></a></div>
- <div data-r>
-  <details open><summary><span class="n">01</span><b>Кузов</b><span class="pm"></span></summary><div class="rows">
+<!-- УСЛУГИ. Цены только с Яндекс Карт, остальное «по фото», пока Джони не пришлёт прайс. data-peek = фото, которое едет за курсором -->
+<section id="services">
+ <div class="sv-h"><div><span class="k" data-r>Услуги</span><h2>Что<br><em>делаем</em></h2></div>
+  <p data-r>Цена зависит от машины и состояния. Пришлите фото в чат, назовём сумму до начала работ.</p></div>
+ <div class="svl" id="svl">
+  <details data-peek="focus3.jpg"><summary><span class="n">01</span><b>Кузов</b><small>Полировка, керамика</small><span class="pm"></span></summary><div class="rows">
    <div class="row">Лёгкая полировка<b class="f">по фото</b></div><div class="row">Абразивная полировка<b class="f">по фото</b></div><div class="row">Керамика и жидкое стекло<b class="f">по фото</b></div><div class="row">Удаление царапин без покраски<b class="f">по фото</b></div><div class="row">Антидождь<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует полировка. Моя машина: ">Узнать цену на полировку</a></div></details>
-  <details><summary><span class="n">02</span><b>Вмятины без покраски</b><span class="pm"></span></summary><div class="rows">
-   <div class="row">Удаление вмятин по технологии PDR<b class="f">по фото</b></div><div class="row">Сложные случаи: крыша, багажник, рёбра<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book data-msg="Здравствуйте! Я с сайта, у меня вмятина. Пришлю фото. Моя машина: ">Прислать фото вмятины</a></div></details>
-  <details><summary><span class="n">03</span><b>Плёнки и тонировка</b><span class="pm"></span></summary><div class="rows">
+   <a class="btn g" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует полировка. Моя машина: ">Узнать цену на полировку</a></div></details>
+  <details data-peek="pdr-lamp.jpg"><summary><span class="n">02</span><b>Вмятины без покраски</b><small>Технология PDR</small><span class="pm"></span></summary><div class="rows">
+   <div class="row">Удаление вмятин по технологии PDR<b class="f">по фото</b></div><div class="row">Сложные места: крыша, багажник, рёбра<b class="f">по фото</b></div>
+   <a class="btn g" href="#book" data-book data-msg="Здравствуйте! Я с сайта, у меня вмятина. Пришлю фото. Моя машина: ">Прислать фото вмятины</a></div></details>
+  <details data-peek="gle.jpg"><summary><span class="n">03</span><b>Плёнки и тонировка</b><small>от 60 000 ₽</small><span class="pm"></span></summary><div class="rows">
    <div class="row">Оклейка зон риска полиуретаном<b>от 60 000 ₽</b></div><div class="row">Полная оклейка в цветной полиуретан<b>от 280 000 ₽</b></div><div class="row">Винил, гибридная и антигравийная плёнка<b class="f">по фото</b></div><div class="row">Бронь фар и лобового стекла<b class="f">по фото</b></div><div class="row">Тонировка<b class="f">по фото</b></div><div class="row">Оклейка элементов салона<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует оклейка плёнкой. Моя машина: ">Подобрать плёнку</a></div></details>
-  <details><summary><span class="n">04</span><b>Салон</b><span class="pm"></span></summary><div class="rows">
+   <a class="btn g" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует оклейка плёнкой. Моя машина: ">Подобрать плёнку</a></div></details>
+  <details data-peek="seat-after.jpg"><summary><span class="n">04</span><b>Салон</b><small>Химчистка, кожа</small><span class="pm"></span></summary><div class="rows">
    <div class="row">Химчистка салона<b class="f">по фото</b></div><div class="row">Химчистка с разбором салона<b class="f">по фото</b></div><div class="row">Озонация<b class="f">по фото</b></div><div class="row">Реставрация и покраска кожи<b class="f">по фото</b></div><div class="row">Шумоизоляция четырёх дверей<b>от 40 000 ₽</b></div><div class="row">Антискрип<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует химчистка салона. Моя машина: ">Узнать цену на химчистку</a></div></details>
-  <details><summary><span class="n">05</span><b>Фары, диски, суппорты</b><span class="pm"></span></summary><div class="rows">
+   <a class="btn g" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересует химчистка салона. Моя машина: ">Узнать цену на химчистку</a></div></details>
+  <details data-peek="discs.jpg"><summary><span class="n">05</span><b>Фары, диски, суппорты</b><small>Реставрация</small><span class="pm"></span></summary><div class="rows">
    <div class="row">Реставрация и полировка фар и фонарей<b class="f">по фото</b></div><div class="row">Покраска и реставрация дисков<b class="f">по фото</b></div><div class="row">Ремонт бордюрки, алмазная проточка<b class="f">по фото</b></div><div class="row">Покраска и обслуживание суппортов<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересуют фары или диски. Моя машина: ">Спросить про свою машину</a></div></details>
-  <details><summary><span class="n">06</span><b>Ещё</b><span class="pm"></span></summary><div class="rows">
+   <a class="btn g" href="#book" data-book data-msg="Здравствуйте! Я с сайта, интересуют фары или диски. Моя машина: ">Спросить про свою машину</a></div></details>
+  <details data-peek="lynk.jpg"><summary><span class="n">06</span><b>Ещё</b><small>Русификация, сетки</small><span class="pm"></span></summary><div class="rows">
    <div class="row">Сетки в бампер<b class="f">по фото</b></div><div class="row">Установка видеорегистраторов<b class="f">по фото</b></div><div class="row">Русификация китайских и корейских машин<b class="f">по фото</b></div><div class="row">Ламинация карбоном, аквапринт<b class="f">по фото</b></div>
-   <a class="btn i" href="#book" data-book>Спросить</a></div></details>
-  <p class="legend">Цены «от» с Яндекс Карт. Остальное считаем по фото и называем до начала работ.</p>
+   <a class="btn g" href="#book" data-book>Спросить</a></div></details>
  </div>
+ <p class="legend">Цены «от» с Яндекс Карт. Остальное считаем по фото и называем до начала работ.</p>
+ <a class="rr" href="https://johnny-studio.github.io/" data-r><span><b>Дооснащение Range Rover</b><small>Фары, рестайлинг, мультимедиа. Отдельный сайт</small></span><i>→</i></a>
+ <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
 </section>
 
 <!-- ОТЗЫВЫ с Яндекс Карт, только про детейлинг -->
-<section class="dk rv" id="reviews">
- <div><span class="k" data-r>Отзывы</span><h2 data-r>Что говорят<br><em>клиенты</em></h2>
-  <div class="score" data-r><b>5,0</b><span><i>★★★★★</i><br>72 оценки, 68 отзывов<br>на Яндекс Картах</span></div>
+<section class="rv" id="reviews">
+ <div><span class="k" data-r>Отзывы</span><h2>Что говорят<br><em>клиенты</em></h2>
+  <div class="score" data-r><b class="gt">5,0</b><span><i>★★★★★</i><br>72 оценки, 68 отзывов<br>на Яндекс Картах</span></div>
   <a class="btn o lnk" href="https://yandex.ru/maps/org/152411231869/reviews/" target="_blank" rel="noopener" data-r>Все отзывы на Картах</a></div>
- <div class="qt" data-r aria-live="polite"><div class="mark" aria-hidden="true">“</div><blockquote id="qT"></blockquote>
+ <div class="qt" data-r aria-live="polite"><div class="mark gt" aria-hidden="true">“</div><blockquote id="qT"></blockquote>
   <div><div class="who"><div><b id="qN"></b><small id="qS"></small></div>
    <div class="nav2"><button type="button" id="qP" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><span id="qC"></span><button type="button" id="qX" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
    <div class="bar"><i id="qB"></i></div></div></div>
 </section>
 
-<section id="how"><span class="k" data-r>Как проходит работа</span><h2 data-r>От фото<br><em>до выдачи</em></h2>
+<section id="how"><span class="k" data-r>Как проходит работа</span><h2>От фото<br><em>до выдачи</em></h2>
  <div class="steps" id="steps"><span class="ln2"></span>
   <div class="sp"><span class="n">01</span><h3>Присылаете фото</h3><p>Покажите, что беспокоит: вмятину, кузов, салон или фары. Подскажем, что поможет, и примерную цену.</p></div>
   <div class="sp"><span class="n">02</span><h3>Приезжаете на осмотр</h3><p>Тюменский проезд, есть парковка. Смотрим машину вживую и называем точную цену до начала работ.</p></div>
-  <div class="sp"><span class="n">03</span><h3>Делаем</h3><p>Согласовали список и погнали. Пока ждёте, есть кофе и Wi‑Fi.</p></div>
+  <div class="sp"><span class="n">03</span><h3>Делаем</h3><p>Согласовали список и работаем. Пока ждёте, есть кофе и Wi‑Fi.</p></div>
   <div class="sp"><span class="n">04</span><h3>Забираете</h3><p>Смотрим результат вместе при хорошем свете и рассказываем, как ухаживать дальше.</p></div>
  </div></section>
 
-<section class="faq" id="faq"><div><span class="k" data-r>Коротко</span><h2 data-r>Вопросы<br><em>и ответы</em></h2></div>
+<section class="faq" id="faq"><div><span class="k" data-r>Коротко</span><h2>Вопросы<br><em>и ответы</em></h2></div>
  <div data-r>
-  <details><summary>С какими машинами работаете?<span class="pm"></span></summary><dd>С любыми: от Kia и Ford до BMW X7 и Mercedes GLE. Бывают даже мотоциклы. Range Rover дооснащаем отдельно, для них есть <a href="https://johnny-studio.github.io/" style="text-decoration:underline">свой сайт</a>.</dd></details>
+  <details><summary>С какими машинами работаете?<span class="pm"></span></summary><dd>С любыми: от Kia и Ford до BMW X7 и Mercedes GLE. Бывают даже мотоциклы. Range Rover дооснащаем отдельно, для них есть <a href="https://johnny-studio.github.io/">свой сайт</a>.</dd></details>
   <details><summary>Можно убрать вмятину без покраски?<span class="pm"></span></summary><dd>Чаще всего да, если лак цел. Пришлите фото, скажем честно, получится ли и сколько стоит. Брались и за крышу после падения дерева.</dd></details>
   <details><summary>Сколько стоит?<span class="pm"></span></summary><dd>Зависит от машины и состояния, поэтому считаем по фото. Оклейка зон риска от 60 000 ₽, полная оклейка в цветной полиуретан от 280 000 ₽. Точную цену называем до начала работ.</dd></details>
   <details><summary>Как можно оплатить?<span class="pm"></span></summary><dd>Переводом, по QR-коду, картой или наличными.</dd></details>
   <details><summary>Где вы находитесь?<span class="pm"></span></summary><dd>Москва, Тюменский проезд, 5, стр. 2. Работаем с 10:00 до 20:00, есть парковка.</dd></details>
  </div></section>
 
-<section class="dk ctc" id="contacts">
- <div><span class="k" data-r>Контакты</span><h2 data-r>Приезжайте<br><em>на осмотр</em></h2>
+<section class="ctc" id="contacts">
+ <div><span class="k" data-r>Контакты</span><h2>Приезжайте<br><em>на осмотр</em></h2>
   <dl data-r><div><dt>Адрес</dt><dd>Москва, Тюменский проезд, 5, стр. 2<small>Рядом метро Бульвар Рокоссовского, есть парковка</small></dd></div><div><dt>Режим</dt><dd>10:00–20:00</dd></div><div><dt>Запись</dt><dd><a href="tel:+79623634212">+7 (962) 363-42-12</a><small>Евгений</small></dd></div></dl>
   <div class="cta" data-r><a class="btn g" href="#book" data-book>Записаться</a><a class="btn o" href="tel:+79623634212">Позвонить</a></div></div>
  <div class="map" id="map" data-r>
@@ -442,12 +491,12 @@ details[open]>summary .pm::after{rotate:0deg}
   <div class="pin"><span><img src="img/logo.jpg" alt=""><b>Johnny Studio</b></span><u></u></div>
   <div class="top"><span class="chip2" id="live"><i></i><span>Открыто</span></span></div>
   <span class="osm">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></span>
-  <div class="bt"><a class="btn g" href="https://yandex.ru/maps/?rtext=~55.80955%2C37.740983&rtt=auto" target="_blank" rel="noopener">Маршрут</a><button class="btn o" type="button" id="mapOpen" style="background:rgba(15,15,14,.8)">Открыть карту</button></div>
+  <div class="bt"><a class="btn g" href="https://yandex.ru/maps/?rtext=~55.80955%2C37.740983&rtt=auto" target="_blank" rel="noopener">Маршрут</a><button class="btn o" type="button" id="mapOpen" style="background:rgba(12,12,11,.8)">Открыть карту</button></div>
   <button class="x" type="button" id="mapX" aria-label="Закрыть карту">×</button>
  </div>
 </section>
 </main>
-<footer class="ft"><span>Johnny Studio · детейлинг · Москва</span><span><a href="https://t.me/johnnypolishmycar" target="_blank" rel="noopener">Telegram-канал</a> · <a href="https://yandex.ru/maps/org/152411231869/" target="_blank" rel="noopener">Мы на Яндекс Картах</a></span></footer>
+<footer class="ft"><span>Johnny Studio · детейлинг · Москва</span><span><a href="https://johnny-studio.github.io/">Дооснащение Range Rover</a> · <a href="https://t.me/johnnypolishmycar" target="_blank" rel="noopener">Telegram-канал</a> · <a href="https://yandex.ru/maps/org/152411231869/" target="_blank" rel="noopener">Яндекс Карты</a></span></footer>
 
 <div class="mbar" id="mbar"><a class="btn g" href="#book" data-book>Записаться</a><a class="btn o" href="#case" style="flex:0 0 auto;padding:0 16px">Подбор</a><a class="btn o" href="tel:+79623634212" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a></div>
 
@@ -469,29 +518,37 @@ details[open]>summary .pm::after{rotate:0deg}
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// h2 режем по <br> на строки с маской
+$$('h2').forEach(h=>{h.innerHTML=h.innerHTML.split(/<br\s*\/?>/i).map(x=>`<span class="ln"><b>${x}</b></span>`).join('')});
+
+// ===== ЛЕНТЫ ПЕРВОГО ЭКРАНА: фото из канала, дублируем для бесшовной петли
+const REEL=[['hero.jpg','Lexus RX 350'],['gle2.jpg','Mercedes GLE'],['palisade.jpg','Hyundai Palisade'],['x5.jpg','BMW X5'],['pdr-lamp.jpg','Вмятины без покраски'],['lynk.jpg','Lynk & Co 900'],
+ ['focus3.jpg','Ford Focus, полировка'],['mini.jpg','Mini Cooper S'],['x7.jpg','BMW X7'],['monjaro.jpg','Geely Monjaro'],['head-after.jpg','Фара после реставрации'],['discs.jpg','Диски']];
+const fig=(r,i)=>`<figure><img src="img/${r[0]}" alt="" ${i<2?'':'loading="lazy" '}decoding="async"><figcaption>${r[1]}</figcaption></figure>`;
+const half=REEL.length/2,ra=REEL.slice(0,half),rb=REEL.slice(half);
+$('#c1').innerHTML=ra.map(fig).join('')+ra.map((r,i)=>fig(r,9)).join('');$('#c2').innerHTML=rb.map(fig).join('')+rb.map((r,i)=>fig(r,9)).join('');
 const go=()=>$('.hero').classList.add('go');addEventListener('load',()=>setTimeout(go,60));setTimeout(go,1200);
+
 let hideBar=false;
 const onS=()=>{const y=scrollY;$('#nav').classList.toggle('s',y>30);$('#mbar').classList.toggle('on',!hideBar&&y>innerHeight*.8)};addEventListener('scroll',onS,{passive:true});onS();
-// нижняя панель уходит у контактов, там свои кнопки
 new IntersectionObserver(es=>{hideBar=es[0].isIntersecting;onS()}).observe($('#contacts'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-$$('[data-r],#steps').forEach(el=>io.observe(el));
-$$('.grid .wc').forEach((c,i)=>c.style.transitionDelay=(i%3)*.1+'s');
+$$('[data-r],h2,#steps').forEach(el=>io.observe(el));
 
 // ===== ЧТО СЛУЧИЛОСЬ. Кадры и истории из канала Джони. type: pair = до/после рядом, slider = ползунок, one = один кадр
 const CASES=[
- {t:'Вмятина',h:'Вмятины без покраски',type:'pair',a:'dent-before.jpg',b:'dent-after.jpg',alt:'Вмятина на двери багажника до и после',
-  s:'Неудачно сдали назад и упёрлись в дерево. Вытянули дверь багажника без покраски. А на Mercedes Vito до нас мастер бросил работу на полпути и сказал, что это невозможно. <b>Сделали.</b>',
+ {t:'Вмятина',h:'Вмятины без покраски',type:'pair',a:'dent-before.jpg',b:'dent-after.jpg',alt:'Вмятина на двери багажника',
+  s:'Неудачно сдали назад в дерево. Вытянули дверь багажника без покраски. А на Mercedes Vito до нас мастер бросил работу на полпути и сказал, что это невозможно. <b>Сделали.</b>',
   l:['Удаление вмятин по технологии PDR','Сложные места: крыша, рёбра, багажник','Лак остаётся заводской'],p:'По фото',ps:'Пришлите снимок вмятины при дневном свете',m:'вмятина'},
  {t:'Мутные фары',h:'Реставрация фар',type:'slider',a:'head-before.jpg',b:'head-after.jpg',alt:'Фара Ford Focus 2',
-  s:'Ford Focus 2, владелец пришёл с проблемой: <b>«света нет, вид ужас»</b>. Сняли старый лак, отполировали и оклеили фары фотохромной плёнкой. Потяните ползунок.',
+  s:'Ford Focus 2, владелец пришёл с проблемой <b>«света нет, вид ужас»</b>. Сняли старый лак, отполировали и оклеили фотохромной плёнкой. Потяните ползунок.',
   l:['Снятие старого лака и полировка','Бронь фар плёнкой, чтобы не мутнели','Полировка фонарей'],p:'По фото',ps:'Цена зависит от состояния фар',m:'мутные фары'},
  {t:'Кузов без блеска',h:'Полировка и керамика',type:'one',a:'focus3.jpg',alt:'Чёрный Ford Focus 3 после абразивной полировки',
   s:'Ford Focus 3 приехал <b>матовым</b>: цвета не было видно под царапинами и пескоструем. Абразивная полировка и керамика, теперь машина горит.',
-  l:['Лёгкая полировка, чтобы освежить','Абразивная полировка, если много царапин','Керамика или жидкое стекло для защиты'],p:'По фото',ps:'Зависит от размера машины и состояния лака',m:'кузов без блеска, нужна полировка'},
- {t:'Грязный салон',h:'Химчистка салона',type:'pair',a:'seat-before.jpg',b:'seat-after.jpg',alt:'Кресло Audi Q7 до и после химчистки',
+  l:['Лёгкая полировка, чтобы освежить','Абразивная, если много царапин','Керамика или жидкое стекло'],p:'По фото',ps:'Зависит от размера машины и состояния лака',m:'кузов без блеска, нужна полировка'},
+ {t:'Грязный салон',h:'Химчистка салона',type:'pair',a:'seat-before.jpg',b:'seat-after.jpg',alt:'Кресло Audi Q7',
   s:'Audi Q7, химчистка с разбором салона. <b>«Это. Просто. Жесть»</b>, сказали мы с владельцем, когда включили инспекционный фонарь. Справа то же кресло после.',
-  l:['Химчистка, в том числе с разбором салона','Озонация от запахов','Реставрация и покраска кожи'],p:'По фото',ps:'Зависит от размера салона и загрязнения',m:'нужна химчистка салона'},
+  l:['Химчистка, в том числе с разбором','Озонация от запахов','Реставрация и покраска кожи'],p:'По фото',ps:'Зависит от размера салона и загрязнения',m:'нужна химчистка салона'},
  {t:'Защитить кузов',h:'Оклейка плёнкой',type:'one',a:'gle.jpg',alt:'Mercedes GLE в матовом полиуретане',
   s:'Mercedes GLE 450d, полная оклейка в матовый полиуретан. Владельцу так понравилось, что обещал привезти <b>машину жены</b>.',
   l:['Зоны риска: капот, бампер, фары, зеркала','Полная оклейка, в том числе со сменой цвета','Бронь лобового стекла','Тонировка'],p:'от 60 000 ₽',ps:'Зоны риска, цена с Яндекс Карт',m:'хочу защитить кузов плёнкой'},
@@ -499,22 +556,21 @@ const CASES=[
   s:'Освежаем то, что видно сразу: <b>диски и суппорты</b>. Красим, правим бордюрку, делаем алмазную проточку и брашировку.',
   l:['Покраска и реставрация дисков','Ремонт бордюрки','Покраска и обслуживание суппортов'],p:'По фото',ps:'Зависит от диаметра и состояния',m:'диски или суппорты'}];
 const tabs=$('#tabs'),cv=$('#cv');let ci=0,caseMsg='';
-tabs.innerHTML=CASES.map((c,i)=>`<button type="button" role="tab" id="tab${i}" aria-controls="caseBox" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${c.t}</button>`).join('');
+tabs.innerHTML=CASES.map((c,i)=>`<button type="button" role="tab" id="tab${i}" aria-controls="caseBox" aria-selected="${i===0}" tabindex="${i===0?0:-1}"><i>0${i+1}</i>${c.t}</button>`).join('');
 const arr='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>';
+function setP(v){v=Math.max(0,Math.min(100,v));cv.style.setProperty('--p',v+'%');cv.setAttribute('aria-valuenow',Math.round(v))}
 function showCase(i,anim){ci=i;const c=CASES[i];
  $$('#tabs button').forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});$('#caseBox').setAttribute('aria-labelledby','tab'+i);
+ ['tabindex','role','aria-label','aria-valuemin','aria-valuemax','aria-valuenow'].forEach(x=>cv.removeAttribute(x));
  if(c.type==='pair'){cv.className='cv pair';cv.innerHTML=`<figure><img src="img/${c.a}" alt="${c.alt}, до"><span class="lb l">До</span></figure><figure><img src="img/${c.b}" alt="${c.alt}, после"><span class="lb r">После</span></figure>`}
  else if(c.type==='slider'){cv.className='cv sl';cv.tabIndex=0;cv.setAttribute('role','slider');cv.setAttribute('aria-label',c.alt+': до и после');cv.setAttribute('aria-valuemin',0);cv.setAttribute('aria-valuemax',100);
   cv.innerHTML=`<img src="img/${c.a}" alt="${c.alt}, до"><img class="af" src="img/${c.b}" alt="${c.alt}, после"><span class="lb l">До</span><span class="lb r">После</span><span class="hd"><i>${arr}</i></span>`;setP(50)}
  else{cv.className='cv';cv.innerHTML=`<img src="img/${c.a}" alt="${c.alt}"><span class="lb r">Наша работа</span>`}
- if(c.type!=='slider'){cv.removeAttribute('tabindex');cv.removeAttribute('role');cv.removeAttribute('aria-label')}
  $('#cT').textContent=c.h;$('#cS').innerHTML=c.s;$('#cL').innerHTML=c.l.map(x=>`<li>${x}</li>`).join('');$('#cP').textContent=c.p;$('#cPs').textContent=c.ps;
  caseMsg=`Здравствуйте! Я с сайта. Проблема: ${c.m}. Пришлю фото. Моя машина: `;
  if(anim&&!RM){const b=$('#caseBox');b.classList.remove('sw');void b.offsetWidth;b.classList.add('sw')}}
-function setP(v){v=Math.max(0,Math.min(100,v));cv.style.setProperty('--p',v+'%');cv.setAttribute('aria-valuenow',Math.round(v))}
 tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)showCase($$('#tabs button').indexOf(b),true)});
-tabs.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;e.preventDefault();const n=(ci+(e.key==='ArrowRight'?1:-1)+CASES.length)%CASES.length;showCase(n,true);$('#tab'+n).focus()});
-// ползунок: палец или мышь, стрелки с клавиатуры
+tabs.addEventListener('keydown',e=>{const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];if(!k)return;e.preventDefault();const n=(ci+k+CASES.length)%CASES.length;showCase(n,true);$('#tab'+n).focus()});
 let drag=false;const fromX=x=>{const r=cv.getBoundingClientRect();setP((x-r.left)/r.width*100)};
 cv.addEventListener('pointerdown',e=>{if(!cv.classList.contains('sl'))return;drag=true;cv.setPointerCapture(e.pointerId);fromX(e.clientX)});
 cv.addEventListener('pointermove',e=>{if(drag)fromX(e.clientX)});
@@ -522,16 +578,32 @@ cv.addEventListener('pointermove',e=>{if(drag)fromX(e.clientX)});
 cv.addEventListener('keydown',e=>{if(!cv.classList.contains('sl'))return;const v=+cv.getAttribute('aria-valuenow');if(e.key==='ArrowLeft'){setP(v-5);e.preventDefault()}if(e.key==='ArrowRight'){setP(v+5);e.preventDefault()}});
 showCase(0,false);
 
-// ===== РАБОТЫ: показать ещё и фото крупно =====
-$('#more').onclick=function(){$$('.wc[hidden]').forEach(c=>{c.hidden=false;c.classList.add('in')});this.remove()};
+// ===== ЦИТАТА: слова загораются по мере прокрутки
+(()=>{const p=$('#sayP');p.innerHTML=p.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');const ws=[...p.children];if(RM){ws.forEach(w=>w.classList.add('on'));return}
+ let t=false;const u=()=>{t=false;const r=p.getBoundingClientRect(),k=Math.max(0,Math.min(1,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));const n=Math.round(k*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<n))};
+ addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(u)}},{passive:true});u()})();
+
+// ===== РАБОТЫ: на ПК лента едет вбок, пока секция «прилипла»; на телефоне обычный свайп
+(()=>{const sec=$('#works'),tr=$('#track'),pr=$('#prog');const big=()=>!RM&&matchMedia('(min-width:901px)').matches;let dist=0,t=false;
+ const upd=()=>{t=false;if(!big())return;const r=sec.getBoundingClientRect(),k=Math.max(0,Math.min(1,-r.top/(sec.offsetHeight-innerHeight||1)));tr.style.transform=`translate3d(${-k*dist}px,0,0)`;pr.style.setProperty('--pr',k.toFixed(3))};
+ const size=()=>{if(!big()){sec.style.removeProperty('--len');tr.style.transform='';return}dist=Math.max(0,tr.scrollWidth-innerWidth);sec.style.setProperty('--len',(innerHeight+dist)+'px');upd()};
+ addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',size);addEventListener('load',size);size()})();
 const lb=$('#lb');let lbFrom=null;
-$$('.wc').forEach(c=>{c.tabIndex=0;const op=()=>{const im=c.querySelector('img');$('#lbi').src=im.src;$('#lbi').alt=im.alt;$('#lbp').textContent=c.querySelector('h3').textContent+'. '+c.querySelector('p').textContent;lbFrom=c;lb.classList.add('on');$('#lbx').focus()};c.onclick=op;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();op()}}});
+$$('.wc:not(.end)').forEach(c=>{c.tabIndex=0;const op=()=>{const im=c.querySelector('img');$('#lbi').src=im.src;$('#lbi').alt=im.alt;$('#lbp').textContent=c.querySelector('h3').textContent+'. '+c.querySelector('p').textContent;lbFrom=c;lb.classList.add('on');$('#lbx').focus()};c.onclick=op;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();op()}}});
 const closeLb=()=>{if(!lb.classList.contains('on'))return;lb.classList.remove('on');lbFrom&&lbFrom.focus({preventScroll:true})};$('#lbx').onclick=closeLb;lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 
-// ===== ОТЗЫВЫ с Яндекс Карт про детейлинг, сокращены =====
+// ===== УСЛУГИ: одна строка открыта за раз; фото едет за курсором (только мышь на ПК)
+(()=>{const pk=$('#peek'),im=pk.querySelector('img'),ds=$$('#svl details');
+ ds.forEach(d=>d.addEventListener('toggle',()=>{if(d.open)ds.forEach(o=>o!==d&&(o.open=false))}));
+ if(RM||!matchMedia('(hover:hover) and (min-width:901px)').matches)return;
+ let x=0,y=0,cx=0,cy=0,raf=0,on=false;
+ const loop=()=>{cx+=(x-cx)*.14;cy+=(y-cy)*.14;pk.style.transform=`translate(${cx+28}px,${cy-150}px)`;raf=on?requestAnimationFrame(loop):0};
+ ds.forEach(d=>{const s=d.querySelector('summary');s.addEventListener('mouseenter',()=>{im.src='img/'+d.dataset.peek;pk.classList.add('on');on=true;if(!raf)raf=requestAnimationFrame(loop)});s.addEventListener('mouseleave',()=>{pk.classList.remove('on');on=false})});
+ addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY},{passive:true})})();
+
+// ===== ОТЗЫВЫ с Яндекс Карт про детейлинг, сокращены
 const REV=[
  ['Елизавета С.','Вмятины без покраски','Всё на высшем уровне! Три вмятины убрали, всё очень быстро, день в день за пару часов, нет следов, мы очень довольны!'],
- ['Василий К.','Полировка','Мастер своего дела на 100%: чётко, красиво, самое главное дотошно до каждой мелочи! Лучшая полировка, какую я видел!'],
  ['Никита Л.','Химчистка, Santa Fe','Делал химчистку на Санта-Фе 2014 года, сделали в идеал, как будто с салона новую машину забрал. Всё быстро и качественно!'],
  ['Андрей З.','Полировка фар','Заехал оценить плёнку на фарах, ей уже 3 года. Обсудили варианты и решили сделать полировку. Без навязывания лишних услуг, конструктивно и по делу.'],
  ['Роман М.','Тонировка, BMW E39','Боковые передние в атермалку и заднюю полусферу в пятёрку. Полусферу кстати Люмаром настоящим оклеили, что очень приятно!'],
